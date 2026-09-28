@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuxeWear - مد لوکس و پایدار با طراحی‌های مدرن و خلاقانه">
+    <meta name="keywords" content="مد لوکس, فشن پایدار, طراحی مدرن, خرید آنلاین, LuxeWear">
+    <title>LuxeWear - مد پایدار و لوکس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #1A2A44;
+            --secondary-color: #F8F1E9;
+            --accent-color: #A8A8A8;
+            --highlight-color: #D4A017;
+            --background-color: #EDEDED;
+            --font-size-base: 1rem;
+            --spacing-unit: 1.5rem;
+            --header-height: 4.5rem;
+        }
+        body {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-family: 'Roboto', sans-serif;
+            font-size: var(--font-size-base);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(180deg, var(--secondary-color) 30%, var(--background-color));
+            opacity: 0.95;
+        }
+        header {
+            background: linear-gradient(to bottom, var(--secondary-color), rgba(248, 241, 233, 0.95));
+            padding: 0.8rem 1.5rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.05);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(248, 241, 233, 0.98);
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        .logo svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-left: 0.5rem;
+            transition: transform 0.5s ease;
+        }
+        .logo:hover svg {
+            transform: rotate(360deg);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            right: 0;
+            background: var(--highlight-color);
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        nav ul li a:hover {
+            color: var(--highlight-color);
+            transform: translateY(-2px);
+        }
+        nav ul li i {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease, transf(--secondary-color);
+        }
+        .runway h2, .exclusive h2, .lookbook h2, .sustainability h2, .testimonials h2, .instagram h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        .runway h2::after, .exclusive h2::after, .lookbook h2::after, .sustainability h2::after, .testimonials h2::after, .instagram h2::after {
+            content: '';
+            position: absolute;
+            width: 5rem;
+            height: 3px;
+            background: var(--highlight-color);
+            bottom: -0.5rem;
+            right: 50%;
+            transform: translateX(50%);
+        }
+        .runway-grid, .exclusive-grid, .testimonials-grid, .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+            gap: 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        .runway-card, .exclusive-card, .testimonials-card, .instagram-card {
+            position: relative;
+            height: 30rem;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            background: var(--secondary-color);
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            perspective: 1000px;
+        }
+        .runway-card:hover, .exclusive-card:hover, .testimonials-card:hover, .instagram-card:hover {
+            transform: translateZ(20px);
+            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
+        }
+        .runway-card img, .exclusive-card img, .instagram-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .runway-card:hover img, .exclusive-card:hover img, .instagram-card:hover img {
+            transform: scale(1.1);
+        }
+        .runway-card .overlay, .exclusive-card .overlay, .instagram-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(26, 42, 68, 0.85));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .runway-card:hover .overlay, .exclusive-card:hover .overlay, .instagram-card:hover .overlay {
+            opacity: 1;
+        }
+        .runway-card h3, .exclusive-card h3, .instagram-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        .runway-card p, .exclusive-card p, .instagram-card p {
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+        .exclusive-card .countdown {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+        }
+        .lookbook {
+            position: relative;
+            background: var(--background-color);
+        }
+        .lookbook-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+            scrollbar-width: none;
+            padding-bottom: 1rem;
+        }
+        .lookbook-grid::-webkit-scrollbar {
+            display: none;
+        }
+        .lookbook-card {
+            flex: 0 0 16rem;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;background: var(--secondary-color);
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+        .lookbook-card:hover {
+            transform: translateZ(20px);
+        }
+        .lookbook-card img {
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .lookbook-card:hover img {
+            transform: scale(1.1);
+        }
+        .lookbook-card .customize {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .lookbook-card:hover .customize {
+            opacity: 1;
+        }
+        .lookbook-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .lookbook-nav button {
+            background: var(--primary-color);
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+        }
+        .lookbook-nav button:hover {
+            background: var(--highlight-color);
+            transform: scale(1.2);
+            box-shadow: 0 0.3rem 0.6rem rgba(212, 160, 23, 0.3);
+        }
+        .brand-story {
+            padding: 6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            max-width: 80rem;
+            margin: 0 auto;
+            background: var(--background-color);
+            border-radius: 1.5rem;
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+        }
+        .brand-story img {
+            width: 50%;
+            border-radius: 1.5rem;
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+        .brand-story img:hover {
+            transform: translateZ(20px);
+        }
+        .brand-story-content {
+            text-align: right;
+            color: var(--primary-color);
+        }
+        .brand-story-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .sustainability-content {
+            max-width: 45rem;
+            margin: 0 auto;
+            background: var(--background-color);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+        .sustainability-content:hover {
+            transform: translateZ(20px);
+        }
+        .testimonials {
+            background: var(--background-color);
+        }
+        .testimonials-card {
+            padding: 2rem;
+            text-align: right;
+            background: var(--secondary-color);
+            border-radius: 1.5rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .testimonials-card:hover {
+            transform: translateZ(20px);
+            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
+        }
+        .testimonials-card p {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        .testimonials-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--highlight-color);
+        }
+        .instagram-card .caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(26, 42, 68, 0.85), transparent);
+            color: var(--secondary-color);padding: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+        .instagram-card:hover .caption {
+            opacity: 1;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+            flex-direction: column;
+        }
+        .lightbox img {
+            max-width: 85%;
+            max-height: 75%;
+            border-radius: 1.5rem;
+            box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.3);
+        }
+        .lightbox .caption {
+            color: var(--secondary-color);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            margin-top: 0.8rem;
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .lightbox .close:hover {
+            transform: rotate(90deg);
+        }
+        footer {
+            background: linear-gradient(to top, var(--primary-color), #2e3f6b);
+            padding: 4rem 1.5rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-section p, .footer-section a {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: var(--highlight-color);
+        }
+        .footer-section i {
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+        .footer-section i:hover {
+            transform: rotate(360deg);
+            color: var(--highlight-color);
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            position: relative;
+        }
+        .newsletter-form input {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 2rem;
+            width: 14rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0.5rem rgba(212, 160, 23, 0.3);
+            transform: scale(1.02);
+        }
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(168, 168, 168, 0.3);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-to-top.show {
+            display: block;
+        }
+        .back-to-top:hover {
+            background: var(--highlight-color);
+            transform: scale(1.2);
+            box-shadow: 0 0.3rem 0.6rem rgba(212, 160, 23, 0.3);
+        }
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.5s ease;
+        }
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader svg {
+            width: 5rem;
+            height: 5rem;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @media (max-width: 1200px) {
+            .runway-grid, .exclusive-grid, .testimonials-grid, .instagram-feed {
+                grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+            }
+            .lookbook-card {
+                flex: 0 0 15rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-20px);
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: var(--secondary-color);
+                padding: 2rem;
+                transition: all 0.4s ease;
+                z-index: 999;
+            }
+            nav ul.active {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            nav ul li {
+                margin: 0.8rem 0;
+            }
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+            }
+            .brand-story {
+                flex-direction: column;
+            }
+            .brand-story img {
+                width: 100%;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .lookbook-nav {
+                top: auto;
+                bottom: 0.8rem;
+                transform: none;
+            }
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero {
+                height: 70vh;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .runway-grid, .exclusive-grid, .testimonials-grid, .instagram-feed {
+                grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+            }
+            .lookbook-card {
+                flex: 0 0 13rem;
+            }
+            :root {
+                --font-size-base: 0.95rem;
+                --spacing-unit: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <svg viewBox="0 0 100 100">
+            <path d="M30,30 Q50,10 70,30 M30,70 Q50,90 70,70 M50,30 Q50,50 50,70" stroke="#1A2A44" stroke-width="5" fill="none">
+                <animate attributeName="stroke" values="#1A2A44;#D4A017;#1A2A44" dur="2s" repeatCount="indefinite" />
+            </path>
+            <path d="M45,50 Q50,45 55,50 Q50,55 45,50" fill="#D4A017">
+                <animate attributeName="fill" values="#D4A017;#A8A8A8;#D4A017" dur="1.5s" repeatCount="indefinite" />
+            </path>
+        </svg>
+    </div>
+    <div id="background"></div>
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 100 100">
+                <path d="M30,30 Q50,10 70,30 M30,70 Q50,90 70,70 M50,30 Q50,50 50,70" stroke="#1A2A44" stroke-width="5" fill="none">
+                    <animate attributeName="stroke" values="#1A2A44;#D4A017;#1A2A44" dur="2s" repeatCount="indefinite" />
+                </path>
+                <path d="M45,50 Q50,45 55,50 Q50,55 45,50" fill="#D4A017">
+                    <animate attributeName="fill" values="#D4A017;#A8A8A8;#D4A017" dur="1.5s" repeatCount="indefinite" />
+                </path>
+            </svg>
+            LuxeWear
+        </div>
+        <nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <ul>
+                <li><a href="index.html">خانه</a></li>
+                <li class="dropdown">
+                    <a href="products.html">محصولات</a>
+                    <div class="dropdown-content">
+                        <a href="products.html#men">مجموعه مردانه</a>
+                        <a href="products.html#women">مجموعه زنانه</a>
+                        <a href="products.html#accessories">اکسسوری‌ها</a>
+                    </div>
+                </li>
+                <li><a href="magazine.html">مجله</a></li>
+                <li><a href="sustainability.html">پایداری</a></li>
+                <li><a href="about.html">درباره ما</a></li>
+                <li><a href="contact.html">تماس</a></li>
+                <li><a href="#"><i class="fas fa-user"></i></a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>LuxeWear: مد لوکس، آینده پایدار</h1>
+            <p>با مجموعه‌های خلاقانه و پایدار ما، استایل خود را بازتعریف کنید</p>
+            <a href="products.html" class="btn">اکنون خرید کنید</a>
+        </div>
+    </section>
+    <section class="runway">
+        <h2>جدیدترین مجموعه‌های ما</h2>
+        <div class="runway-grid">
+            <div class="runway-card">
+                <img src="runway1.jpg" alt="کت لوکس مردانه" loading="lazy">
+                <div class="overlay">
+                    <h3>کت لوکس مردانه</h3>
+                    <p>4,900,000 تومان</p>
+                    <a href="products.html#men" class="btn">افزودن به سبد</a>
+                </div>
+            </div>
+            <div class="runway-card">
+                <img src="runway2.jpg" alt="لباس شب زنانه" loading="lazy">
+                <div class="overlay">
+                    <h3>لباس شب زنانه</h3>
+                    <p>7,200,000 تومان</p>
+                    <a href="products.html#women" class="btn">افزودن به سبد</a>
+                </div>
+            </div>
+            <div class="runway-card">
+                <img src="runway3.jpg" alt="کفش پایدار" loading="lazy">
+                <div class="overlay">
+                    <h3>کفش پایدار</h3>
+                    <p>3,600,000 تومان</p>
+                    <a href="products.html#accessories" class="btn">افزودن به سبد</a>
+                </div>
+            </div>
+            <div class="runway-card">
+                <img src="runway4.jpg" alt="کیف لوکس" loading="lazy">
+                <div class="overlay">
+                    <h3>کیف لوکس</h3>
+                    <p>2,800,000 تومان</p>
+                    <a href="products.html#accessories" class="btn">افزودن به سبد</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="exclusive">
+        <h2>محصولات محدود</h2>
+        <div class="exclusive-grid">
+            <div class="exclusive-card">
+                <img src="exclusive1.jpg" alt="مجموعه ویژه" loading="lazy">
+                <div class="countdown" id="countdown1"></div>
+                <div class="overlay">
+                    <h3>مجموعه ویژه</h3>
+                    <p>9,500,000 تومان</p>
+                    <a href="products.html" class="btn">اکنون خرید کنید</a>
+                </div>
+            </div>
+            <div class="exclusive-card">
+                <img src="exclusive2.jpg" alt="همکاری خاص" loading="lazy">
+                <div class="countdown" id="countdown2"></div><div class="overlay">
+                    <h3>همکاری خاص</h3>
+                    <p>12,800,000 تومان</p>
+                    <a href="products.html" class="btn">اکنون خرید کنید</a>
+                </div>
+            </div>
+            <div class="exclusive-card">
+                <img src="exclusive3.jpg" alt="طرح انحصاری" loading="lazy">
+                <div class="countdown" id="countdown3"></div>
+                <div class="overlay">
+                    <h3>طرح انحصاری</h3>
+                    <p>11,000,000 تومان</p>
+                    <a href="products.html" class="btn">اکنون خرید کنید</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="lookbook">
+        <h2>سبک خود را خلق کنید</h2>
+        <div class="lookbook-grid" id="lookbook-grid">
+            <div class="lookbook-card" data-src="lookbook1.jpg" data-caption="استایل 1">
+                <img src="lookbook1.jpg" alt="استایل 1" loading="lazy">
+                <a href="#" class="btn customize">انتخاب رنگ</a>
+            </div>
+            <div class="lookbook-card" data-src="lookbook2.jpg" data-caption="استایل 2">
+                <img src="lookbook2.jpg" alt="استایل 2" loading="lazy">
+                <a href="#" class="btn customize">انتخاب پارچه</a>
+            </div>
+            <div class="lookbook-card" data-src="lookbook3.jpg" data-caption="استایل 3">
+                <img src="lookbook3.jpg" alt="استایل 3" loading="lazy">
+                <a href="#" class="btn customize">شخصی‌سازی</a>
+            </div>
+            <div class="lookbook-card" data-src="lookbook4.jpg" data-caption="استایل 4">
+                <img src="lookbook4.jpg" alt="استایل 4" loading="lazy">
+                <a href="#" class="btn customize">انتخاب طرح</a>
+            </div>
+            <div class="lookbook-card" data-src="lookbook5.jpg" data-caption="استایل 5">
+                <img src="lookbook5.jpg" alt="استایل 5" loading="lazy">
+                <a href="#" class="btn customize">انتخاب سایز</a>
+            </div>
+            <div class="lookbook-card" data-src="lookbook6.jpg" data-caption="استایل 6">
+                <img src="lookbook6.jpg" alt="استایل 6" loading="lazy">
+                <a href="#" class="btn customize">شخصی‌سازی</a>
+            </div>
+        </div>
+        <div class="lookbook-nav">
+            <button class="prev"><i class="fas fa-chevron-right"></i></button>
+            <button class="next"><i class="fas fa-chevron-left"></i></button>
+        </div>
+    </section>
+    <section class="brand-story">
+        <img src="design-process.jpg" alt="فرآیند طراحی LuxeWear" loading="lazy">
+        <div class="brand-story-content">
+            <h2>داستان ما</h2>
+            <p>هر قطعه در LuxeWear با هنر، نوآوری و تعهد به پایداری خلق شده است.</p>
+            <a href="about.html" class="btn">بیشتر بخوانید</a>
+        </div>
+    </section>
+    <section class="sustainability">
+        <div class="sustainability-content">
+            <h2>تعهد به پایداری</h2>
+            <p>ما با استفاده از مواد بازیافتی و فرآیندهای دوستدار محیط زیست، مد آینده را می‌سازیم.</p>
+            <a href="sustainability.html" class="btn">جزئیات بیشتر</a>
+        </div>
+    </section>
+    <section class="testimonials">
+        <h2>نظرات مشتریان</h2>
+        <div class="testimonials-grid">
+            <div class="testimonials-card">
+                <p>کیفیت محصولات LuxeWear بی‌نظیره! ترکیبی بی‌نقص از استایل و پایداری.</p>
+                <h3>سارا محمدی</h3>
+            </div>
+            <div class="testimonials-card">
+                <p>طراحی‌های خلاقانه و خدمات مشتریان عالی. حتماً باز هم خرید می‌کنم!</p>
+                <h3>علی رضایی</h3>
+            </div>
+            <div class="testimonials-card">
+                <p>تجربه‌ای لوکس و متفاوت. ارزش هر تومن رو داره!</p>
+                <h3>نیما احمدی</h3>
+            </div>
+        </div>
+    </section>
+    <section class="instagram">
+        <h2>جهان LuxeWear را کاوش کنید</h2>
+        <div class="instagram-feed">
+            <div class="instagram-card" data-src="insta1.jpg" data-caption="مجموعه بهاری"><img src="insta1.jpg" alt="پست اینستاگرام 1" loading="lazy">
+                <div class="caption">مجموعه بهاری</div>
+            </div>
+            <div class="instagram-card" data-src="insta2.jpg" data-caption="محصولات جدید">
+                <img src="insta2.jpg" alt="پست اینستاگرام 2" loading="lazy">
+                <div class="caption">محصولات جدید</div>
+            </div>
+            <div class="instagram-card" data-src="insta3.jpg" data-caption="پشت صحنه">
+                <img src="insta3.jpg" alt="پست اینستاگرام 3" loading="lazy">
+                <div class="caption">پشت صحنه</div>
+            </div>
+            <div class="instagram-card" data-src="insta4.jpg" data-caption="سبک مشتریان">
+                <img src="insta4.jpg" alt="پست اینستاگرام 4" loading="lazy">
+                <div class="caption">سبک مشتریان</div>
+            </div>
+        </div>
+    </section>
+    <div class="lightbox" id="lightbox">
+        <span class="close"><i class="fas fa-times"></i></span>
+        <img src="" alt="تصویر">
+        <div class="caption"></div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ارتباط با ما</h3>
+                <p>تلفن: 021-12345678</p>
+                <p>ایمیل: info@luxewear.com</p>
+                <p>آدرس: تهران، خیابان مد، پلاک 100</p>
+            </div>
+            <div class="footer-section">
+                <h3>لینک‌های مفید</h3>
+                <p><a href="products.html">محصولات</a></p>
+                <p><a href="sustainability.html">پایداری</a></p>
+                <p><a href="about.html">درباره ما</a></p>
+                <p><a href="contact.html">تماس</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>شبکه‌های اجتماعی</h3>
+                <p>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>خبرنامه</h3>
+                <p>برای دریافت اخبار و تخفیف‌های اختصاصی ثبت‌نام کنید</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="ایمیل خود را وارد کنید" required>
+                    <button class="btn">ثبت‌نام</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 LuxeWear. تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-fZf8O9+Y1Uda3pgsicY1D2Vy6W3Z6zF5fJEcyXfOsnqU1rNa8WjTA==/==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" integrity="sha512-A8K2u9+Y1Uda3pgsicY1D2Vy6W3Z6zF5fJEcyXfOsnqU1rNa8WjTA==/==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 800);
+        });
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            const backToTop = document.querySelector('.back-to-top');
+            backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active') && typeof gsap !== 'undefined') {
+                gsap.fromTo(navMenu.querySelectorAll('li'), 
+                    { opacity: 0, y: 20 }, 
+                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power4.out' }
+                );
+            }
+        });
+        const lookbookGrid = document.querySelector('.lookbook-grid');
+        const prevBtn = document.querySelector('.lookbook-nav .prev');
+        const nextBtn = document.querySelector('.lookbook-nav .next');
+        if (lookbookGrid && prevBtn && nextBtn) {
+            const cardWidth = lookbookGrid.querySelector('.lookbook-card').offsetWidth + 32;
+            prevBtn.addEventListener('click', () => {
+                lookbookGrid.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                lookbookGrid.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+            });
+            lookbookGrid.addEventListener('scroll', () => {
+                const scrollLeft = lookbookGrid.scrollLeft;
+                const closestCard = Math.round(scrollLeft / cardWidth) * cardWidth;
+                lookbookGrid.scrollTo({ left: closestCard, behavior: 'smooth' });
+            });
+        }
+        function startCountdown(elementId, endDate) {
+            const countdownElement = document.getElementById(elementId);
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = new Date(endDate).getTime() - now;
+                if (distance < 0) {
+                    countdownElement.innerHTML = 'منقضی شده';
+                    return;
+                }
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                countdownElement.innerHTML = `${days}ر ${hours}س ${minutes}د ${seconds}ث`;
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+        startCountdown('countdown1', '2025-05-02T23:59:59');
+        startCountdown('countdown2', '2025-05-01T23:59:59');
+        startCountdown('countdown3', '2025-04-30T23:59:59');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxCaption = lightbox.querySelector('.caption');
+        const lightboxClose = lightbox.querySelector('.close');
+        document.querySelectorAll('.lookbook-card, .instagram-card').forEach(card => {
+            card.addEventListener('click', () => {
+                lightboxImg.src = card.dataset.src;
+                lightboxCaption.textContent = card.dataset.caption;
+                lightbox.classList.add('active');
+                if (typeof gsap !== 'undefined') {
+                    gsap.fromTo(lightboxImg, 
+                        { scale: 0.7, opacity: 0 }, 
+                        { scale: 1, opacity: 1, duration: 0.6, ease: 'power4.out' }
+                    );
+                    gsap.fromTo(lightboxCaption, 
+                        { opacity: 0, y: 20 }, 
+                        { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power4.out' }
+                    );
+                }
+            });
+        });
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        lightbox.addEventListener('click', e => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            if (emailInput.value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+                alert('با موفقیت در خبرنامه ثبت‌نام شدید!');
+                emailInput.value = '';
+            } else {
+                alert('لطفاً ایمیل معتبر وارد کنید.');
+            }
+        });
+        if (typeof gsap !== 'undefined') {
+            gsap.from('.logo svg path', { 
+                strokeDasharray: 200, 
+                strokeDashoffset: 200, 
+                duration: 1.8, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.hero-content h1', { 
+                opacity: 0, 
+                y: 50, 
+                duration: 1, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.hero-content p', { 
+                opacity: 0, 
+                y: 50, 
+                duration: 1, 
+                delay: 0.2, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.hero-content .btn', { 
+                opacity: 0, 
+                y: 50, 
+                duration: 1, 
+                delay: 0.4, 
+                ease: 'power4.out' 
+            });
+            gsap.utils.toArray('.runway-card, .exclusive-card, .lookbook-card, .testimonials-card, .instagram-card').forEach((card, index) => {
+                gsap.from(card, {
+                    scrollTrigger: { 
+                        trigger: card, 
+                        start: 'top 85%' 
+                    },
+                    opacity: 0, 
+                    y: 60, 
+                    duration: 0.8, 
+                    delay: index * 0.15, 
+                    ease: 'power4.out'
+                });
+            });
+            gsap.from('.brand-story img', { 
+                scrollTrigger: { 
+                    trigger: '.brand-story', 
+                    start: 'top 85%' 
+                }, 
+                opacity: 0, 
+                y: 60, 
+                duration: 0.8, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.brand-story-content', { 
+                scrollTrigger: { 
+                    trigger: '.brand-story', 
+                    start: 'top 85%' 
+                }, 
+                opacity: 0, 
+                y: 60, 
+                duration: 0.8, 
+                delay: 0.2, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.sustainability-content', { 
+                scrollTrigger: { 
+                    trigger: '.sustainability', 
+                    start: 'top 85%' 
+                }, 
+                opacity: 0, 
+                y: 60, 
+                duration: 0.8, 
+                ease: 'power4.out' 
+            });
+            gsap.from('.footer-section', { 
+                scrollTrigger: { 
+                    trigger: 'footer', 
+                    start: 'top 85%' 
+                }, 
+                opacity: 0, 
+                y: 40, 
+                duration: 0.8, 
+                stagger: 0.15, 
+                ease: 'power4.out' 
+            });
+            gsap.utils.toArray('.footer-section i').forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    gsap.to(icon, { 
+                        rotation: 360, 
+                        color: '#D4A017', 
+                        duration: 0.6, 
+                        ease: 'power4.out' 
+                    });
+                });
+                icon.addEventListener('mouseleave', () => {
+                    gsap.to(icon, { 
+                        rotation: 0, 
+                        color: '#F8F1E9', 
+                        duration: 0.6, 
+                        ease: 'power4.out' 
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>
